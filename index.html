@@ -4,431 +4,883 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>원팜 ONEFARM | 프리미엄 수입육 도소매</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--g:#1C4A1C;--gm:#2D6A2D;--gb:#3D9142;--gold:#B07D2A;--cream:#F7F3EC;--dark:#111811;--white:#fff;--gray:#6B7280;}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;font-size:18px;}
-body{font-family:'Noto Sans KR',sans-serif;background:#fff;color:var(--dark);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
-a{text-decoration:none;color:inherit;}
-img{max-width:100%;display:block;}
+:root {
+  --green: #2A5C2A;
+  --green-light: #3D8B3D;
+  --green-pale: #E8F3E8;
+  --gold: #B8860B;
+  --gold-light: #DAA520;
+  --dark: #141E14;
+  --charcoal: #1E2E1E;
+  --cream: #F5F0E8;
+  --white: #FFFFFF;
+  --text: #1A1A1A;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans KR', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
 
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:999;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 4rem;background:rgba(255,255,255,0.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.06);transition:box-shadow .3s;}
-.nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,0.08);}
-.logo{display:flex;align-items:center;gap:.8rem;}
-.logo-mark{width:36px;height:36px;background:var(--g);display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif;font-size:1.1rem;font-weight:900;color:#fff;border-radius:4px;}
-.logo-kr{font-family:'Noto Serif KR',serif;font-size:1.1rem;font-weight:900;color:var(--g);display:block;}
-.logo-en{font-size:.58rem;letter-spacing:.25em;color:var(--gold);font-weight:700;display:block;margin-top:2px;}
-.nav-menu{display:flex;align-items:center;gap:2.5rem;list-style:none;}
-.nav-menu a{font-size:1rem;font-weight:500;color:#444;transition:color .2s;}
-.nav-menu a:hover{color:var(--g);}
-.nav-btn{background:var(--g);color:#fff!important;padding:.55rem 1.4rem;border-radius:4px;font-size:.88rem;font-weight:700!important;transition:background .2s;}
-.nav-btn:hover{background:var(--gm)!important;}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;}
-.hamburger span{width:24px;height:2px;background:var(--dark);border-radius:2px;transition:all .3s;}
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 5rem;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(42,92,42,0.1);
+  box-shadow: 0 2px 30px rgba(0,0,0,0.06);
+}
+.nav-logo {
+  display: flex; flex-direction: column; line-height: 1;
+}
+.nav-logo-kr {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--green);
+  letter-spacing: 0.15em;
+}
+.nav-logo-en {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+.nav-links a {
+  color: #444;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -3px; left: 0; right: 0;
+  height: 1px; background: var(--green);
+  transform: scaleX(0); transition: transform 0.3s;
+}
+.nav-links a:hover { color: var(--green); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-cta {
+  background: var(--green);
+  color: white !important;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  transition: background 0.3s !important;
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--green-light) !important; color: white !important; }
 
 /* HERO */
-.hero{height:100vh;min-height:600px;position:relative;overflow:hidden;display:flex;align-items:center;}
-.hero-img{position:absolute;inset:0;background:url('images/hero.jpg') center/cover no-repeat;animation:zoom 10s ease-out forwards;}
-.hero-ov{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,25,10,.88) 0%,rgba(10,25,10,.6) 50%,rgba(10,25,10,.28) 100%);}
-@keyframes zoom{from{transform:scale(1.06);}to{transform:scale(1);}}
-.hero-box{position:relative;z-index:2;padding:0 4rem;max-width:680px;animation:fadeUp 1s .2s ease both;}
-.hero-label{display:inline-flex;align-items:center;gap:.6rem;background:rgba(61,145,66,.2);border:1px solid rgba(61,145,66,.4);color:#7DD87D;font-size:.92rem;letter-spacing:.2em;font-weight:700;padding:.4rem 1rem;text-transform:uppercase;margin-bottom:1.8rem;}
-.hero-label::before{content:'';width:6px;height:6px;border-radius:50%;background:#7DD87D;animation:blink 2s infinite;}
-.hero-h1{font-family:'Noto Serif KR',serif;font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:900;color:#fff;line-height:1.2;letter-spacing:-.02em;margin-bottom:1.5rem;}
-.hero-h1 em{color:#7DD87D;font-style:normal;}
-.hero-p{font-size:clamp(1.1rem,1.8vw,1.25rem);color:rgba(255,255,255,.65);line-height:1.9;font-weight:300;margin-bottom:2.5rem;}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
-.btn-g{background:var(--gb);color:#fff;padding:.9rem 2.2rem;font-weight:700;font-size:1rem;border-radius:4px;transition:background .2s,transform .2s;}
-.btn-g:hover{background:#4AA050;transform:translateY(-2px);}
-.btn-ghost{background:transparent;color:rgba(255,255,255,.8);padding:.9rem 2.2rem;font-weight:500;font-size:1rem;border:1px solid rgba(255,255,255,.3);border-radius:4px;transition:border-color .2s,background .2s;}
-.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08);}
-.scroll-ind{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(255,255,255,.35);font-size:.68rem;letter-spacing:.2em;animation:fadeUp 1s .8s ease both;}
-.scroll-bar{width:1px;height:48px;background:linear-gradient(#7DD87D,transparent);animation:pulse 2s infinite;}
+.hero {
+  min-height: 100vh;
+  background: var(--dark);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  position: relative; overflow: hidden;
+  padding: 8rem 2rem 4rem;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(42,92,42,0.4) 0%, transparent 60%),
+    radial-gradient(ellipse at 100% 100%, rgba(184,134,11,0.15) 0%, transparent 50%),
+    linear-gradient(180deg, #0D160D 0%, #141E14 50%, #1A2A1A 100%);
+}
+/* 배경 이미지 대신 SVG 패턴 */
+.hero-pattern {
+  position: absolute; inset: 0; opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-content { position: relative; z-index: 2; max-width: 800px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(42,92,42,0.3);
+  border: 1px solid rgba(61,139,61,0.4);
+  color: #7BC47B;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  padding: 0.45rem 1.2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  border-radius: 2px;
+  animation: fadeUp 0.8s ease both;
+}
+.hero-badge::before { content: '●'; font-size: 0.5rem; animation: pulse 2s infinite; }
+.hero-title-kr {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  animation: fadeUp 0.8s 0.1s ease both;
+  letter-spacing: -0.02em;
+}
+.hero-title-kr span { color: #5DBF5D; }
+.hero-title-en {
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  letter-spacing: 0.4em;
+  color: rgba(255,255,255,0.35);
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.8s 0.15s ease both;
+}
+.hero-desc {
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  color: rgba(255,255,255,0.6);
+  line-height: 1.9;
+  margin-bottom: 3rem;
+  font-weight: 300;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+.hero-btns {
+  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.25s ease both;
+}
+.btn-main {
+  background: var(--green-light);
+  color: white;
+  padding: 1rem 2.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border: none;
+  transition: background 0.3s, transform 0.2s;
+}
+.btn-main:hover { background: #4AA04A; transform: translateY(-2px); }
+.btn-ghost {
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  padding: 1rem 2.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: border-color 0.3s, color 0.3s;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: white; }
+
+/* 스크롤 힌트 */
+.scroll-hint {
+  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  color: rgba(255,255,255,0.3); font-size: 0.72rem; letter-spacing: 0.2em;
+  animation: fadeUp 1s 0.5s ease both;
+}
+.scroll-line {
+  width: 1px; height: 50px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.3), transparent);
+  animation: scrollDown 2s infinite;
+}
 
 /* TICKER */
-.ticker{background:var(--g);overflow:hidden;padding:.75rem 0;}
-.ticker-inner{display:inline-flex;animation:ticker 40s linear infinite;white-space:nowrap;font-size:1rem;}
-.ti{font-size:1rem;font-weight:500;color:rgba(255,255,255,.85);padding:0 2rem;letter-spacing:.08em;}
-.td{color:#7DD87D;padding:0 .5rem;}
+.ticker {
+  background: var(--green);
+  padding: 0.8rem 0;
+  overflow: hidden; white-space: nowrap;
+}
+.ticker-track {
+  display: inline-block;
+  animation: ticker 35s linear infinite;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+.ticker-track .dot { margin: 0 2rem; color: var(--gold-light); }
 
 /* STATS */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--cream);}
-.stat{padding:2.8rem 2rem;text-align:center;border-right:1px solid rgba(0,0,0,.06);transition:background .3s;}
-.stat:last-child{border-right:none;}
-.stat:hover{background:#fff;}
-.sn{font-family:'Noto Serif KR',serif;font-size:2.8rem;font-weight:900;color:var(--g);line-height:1;}
-.su{font-size:1.3rem;color:var(--gold);}
-.sl{font-size:1rem;color:var(--gray);margin-top:.5rem;}
+.stats {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  background: var(--cream);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.stat {
+  padding: 3rem 2rem;
+  text-align: center;
+  border-right: 1px solid rgba(0,0,0,0.06);
+  transition: background 0.3s;
+}
+.stat:last-child { border-right: none; }
+.stat:hover { background: white; }
+.stat-num {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--green);
+  line-height: 1;
+}
+.stat-unit { font-size: 1.4rem; color: var(--gold); }
+.stat-label { font-size: 0.9rem; color: #777; margin-top: 0.4rem; letter-spacing: 0.05em; }
 
-/* SECTIONS */
-.sec{padding:6rem 4rem;}
-.sec.cream{background:var(--cream);}
-.sec.dark{background:var(--dark);}
-.eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.9rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gb);font-weight:700;margin-bottom:1rem;}
-.eyebrow::before{content:'';width:24px;height:1px;background:var(--gb);}
-.eyebrow.white{color:#7DD87D;font-size:.9rem;}
-.eyebrow.white::before{background:#7DD87D;}
-.h2{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.3;letter-spacing:-.02em;margin-bottom:1rem;}
-.h2 .ac{color:var(--g);}
-.h2 .gd{color:var(--gold);}
-.h2.wh{color:#fff;}
-.h2.wh .ac{color:#7DD87D;}
-.desc{font-size:1.1rem;color:var(--gray);line-height:1.9;max-width:560px;}
-.desc.wh{color:rgba(255,255,255,.55);}
-.desc.center{margin:0 auto;text-align:center;}
-.sec-center{text-align:center;}
+/* SECTION */
+.section { padding: 7rem 5rem; }
+.section.bg-cream { background: var(--cream); }
+.section.bg-dark { background: var(--dark); }
+.section-eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--green-light);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.section-eyebrow::before { content: ''; width: 30px; height: 1px; background: var(--green-light); }
+.section-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 900;
+  line-height: 1.3;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.02em;
+}
+.section-title .accent { color: var(--green); }
+.section-title .gold { color: var(--gold); }
+.section-desc { font-size: 1.05rem; color: #666; line-height: 1.9; max-width: 600px; }
 
-/* ORIGIN */
-.origin-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:4rem;} .origin-grid .oc:not(.big){grid-column:span 1;}
-.oc{background:#fff;border:1px solid rgba(0,0,0,.06);overflow:hidden;border-radius:8px;transition:transform .35s,box-shadow .35s;}
-.oc:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.1);}
-.oc.big{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;}
-.ov{height:260px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;}
-.oc.big .ov{height:auto;min-height:320px;}
-.ov img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.75) saturate(1.1);transition:transform .5s;}
-.oc:hover .ov img{transform:scale(1.04);}
-.ov-icon{position:relative;z-index:1;font-size:4rem;filter:drop-shadow(0 4px 20px rgba(0,0,0,.3));}
-.ob{padding:2rem 2.2rem;}
-.oc.big .ob{padding:3rem;display:flex;flex-direction:column;justify-content:center;}
-.oflag{font-size:1.6rem;margin-bottom:.5rem;}
-.octry{font-size:.95rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gb);font-weight:700;margin-bottom:.4rem;}
-.oname{font-family:'Noto Serif KR',serif;font-size:1.5rem;font-weight:900;margin-bottom:.8rem;}
-.oc.big .oname{font-size:2.1rem;}
-.otxt{font-size:1.05rem;color:var(--gray);line-height:1.8;}
-.tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.2rem;}
-.tag{background:#EAF4EA;color:var(--g);font-size:.9rem;font-weight:700;padding:.28rem .75rem;border-radius:20px;}
+/* ORIGIN 산지 */
+.origin-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+.origin-card {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.06);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.origin-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+.origin-card.featured { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; }
+.origin-visual {
+  height: 260px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 5rem;
+  position: relative; overflow: hidden;
+}
+.origin-card.featured .origin-visual { height: auto; min-height: 320px; }
+/* 나라별 배경 - 실제 자연 느낌 SVG 그라디언트 */
+.origin-visual.aus {
+  background: linear-gradient(135deg, #2D5016 0%, #4A7C20 30%, #6B9E30 60%, #8FBF45 80%, #5A8A25 100%);
+}
+.origin-visual.nz {
+  background: linear-gradient(135deg, #1A4A2A 0%, #2D7A40 30%, #3D9A50 60%, #5AB870 80%, #2A6035 100%);
+}
+.origin-visual.usa {
+  background: linear-gradient(135deg, #3D5A1A 0%, #5A7A28 30%, #7A9A38 60%, #9AB848 80%, #4A6A20 100%);
+}
+.origin-visual.esp {
+  background: linear-gradient(135deg, #5A2A0A 0%, #8A4A18 30%, #AA6A28 60%, #C88A40 80%, #6A3A12 100%);
+}
+.origin-visual-icon {
+  font-size: 4rem;
+  filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
+  z-index: 1;
+}
+/* 자연 요소 SVG 오버레이 */
+.origin-visual::before {
+  content: '';
+  position: absolute; inset: 0;
+  opacity: 0.15;
+  background-image: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.4) 0%, transparent 40%),
+                    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.2) 0%, transparent 40%);
+}
+.origin-visual::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 40%;
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.2));
+}
+.origin-info { padding: 2rem 2.5rem; }
+.origin-card.featured .origin-info { display: flex; flex-direction: column; justify-content: center; padding: 3rem; }
+.origin-flag { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.origin-country {
+  font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--green-light); font-weight: 700; margin-bottom: 0.5rem;
+}
+.origin-name {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.5rem; font-weight: 900;
+  color: var(--text); margin-bottom: 0.8rem;
+}
+.origin-card.featured .origin-name { font-size: 2rem; }
+.origin-text { font-size: 0.95rem; color: #666; line-height: 1.8; }
+.origin-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.2rem; }
+.origin-tag {
+  background: var(--green-pale);
+  color: var(--green);
+  font-size: 0.78rem; font-weight: 700;
+  padding: 0.3rem 0.8rem;
+  border-radius: 2px;
+  letter-spacing: 0.05em;
+}
 
-/* BANNER */
-.banner{height:420px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;}
-.banner-img{position:absolute;inset:0;background:url('images/australia.jpg') center/cover no-repeat;}
-.banner-ov{position:absolute;inset:0;background:rgba(10,25,10,.65);}
-.banner-box{position:relative;z-index:2;padding:2rem;}
-.banner-h{font-family:'Noto Serif KR',serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:900;color:#fff;line-height:1.2;margin-bottom:1.2rem;}
-.banner-h em{color:#7DD87D;font-style:normal;}
-.banner-p{font-size:1.1rem;color:rgba(255,255,255,.7);margin-bottom:2rem;}
+/* 파노라마 배너 */
+.panorama {
+  height: 400px;
+  background: linear-gradient(135deg, #0D2A0D 0%, #1A4A1A 20%, #2A6A2A 40%, #3A8A3A 60%, #2A7A2A 80%, #1A5A1A 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  text-align: center;
+}
+.panorama::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(90,180,90,0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 50%, rgba(60,140,60,0.2) 0%, transparent 50%);
+}
+/* 초원 실루엣 SVG */
+.panorama-svg {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  opacity: 0.15;
+}
+.panorama-content { position: relative; z-index: 2; padding: 2rem; }
+.panorama-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 900;
+  color: white;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.panorama-title .hl { color: #7DE87D; }
+.panorama-sub { font-size: 1.05rem; color: rgba(255,255,255,0.7); margin-bottom: 2rem; line-height: 1.7; }
 
 /* PRODUCTS */
-.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.06);border-radius:8px;overflow:hidden;margin-top:4rem;}
-.pc{background:#fff;padding:2.2rem;position:relative;overflow:hidden;transition:background .3s;}
-.pc::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--gb);transition:height .4s;}
-.pc:hover{background:#F6FBF6;}
-.pc:hover::before{height:100%;}
-.pi{font-size:2.4rem;margin-bottom:1rem;}
-.po{font-size:.95rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:.5rem;}
-.pn{font-family:'Noto Serif KR',serif;font-size:1.35rem;font-weight:900;margin-bottom:.7rem;}
-.pd{font-size:1.05rem;color:var(--gray);line-height:1.8;}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1px;
+  background: rgba(0,0,0,0.06);
+  margin-top: 4rem;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.product-card {
+  background: white;
+  padding: 2.5rem;
+  transition: background 0.3s;
+  position: relative;
+}
+.product-card::after {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 3px; height: 0;
+  background: var(--green-light);
+  transition: height 0.4s;
+}
+.product-card:hover { background: #FAFEF8; }
+.product-card:hover::after { height: 100%; }
+.product-emoji { font-size: 2.5rem; margin-bottom: 1.2rem; display: block; }
+.product-origin-tag {
+  font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); font-weight: 700; margin-bottom: 0.6rem;
+}
+.product-name {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.3rem; font-weight: 900;
+  color: var(--text); margin-bottom: 0.8rem;
+}
+.product-desc { font-size: 0.95rem; color: #666; line-height: 1.8; }
 
 /* SERVICES */
-.sg{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:4rem;}
-.sc{background:#fff;border:1px solid rgba(0,0,0,.07);padding:2.5rem;border-radius:8px;position:relative;transition:border-color .3s,box-shadow .3s,transform .3s;}
-.sc:hover{border-color:var(--gb);box-shadow:0 16px 40px rgba(29,74,28,.1);transform:translateY(-4px);}
-.scn{position:absolute;top:1.5rem;right:2rem;font-family:'Noto Serif KR',serif;font-size:3.5rem;font-weight:900;color:rgba(42,92,42,.07);line-height:1;}
-.si{font-size:2rem;margin-bottom:1.1rem;}
-.sn2{font-family:'Noto Serif KR',serif;font-size:1.25rem;font-weight:900;margin-bottom:.7rem;}
-.sd{font-size:1.05rem;color:var(--gray);line-height:1.8;}
+.services-grid {
+  display: grid; grid-template-columns: repeat(2,1fr);
+  gap: 2rem; margin-top: 4rem;
+}
+.service-card {
+  background: white;
+  padding: 2.8rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  position: relative;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.service-card:hover {
+  border-color: var(--green-light);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(42,92,42,0.1);
+}
+.service-num {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 3.5rem; font-weight: 900;
+  color: rgba(42,92,42,0.08);
+  position: absolute; top: 1.5rem; right: 2rem;
+  line-height: 1;
+}
+.service-icon { font-size: 2.2rem; margin-bottom: 1.2rem; }
+.service-name {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.2rem; font-weight: 900;
+  color: var(--text); margin-bottom: 0.8rem;
+}
+.service-desc { font-size: 0.95rem; color: #666; line-height: 1.8; }
 
 /* QUALITY */
-.qg{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
-.ql{list-style:none;margin-top:2rem;}
-.ql li{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:1.1rem;color:rgba(255,255,255,.7);line-height:1.7;}
-.qc{color:#7DD87D;flex-shrink:0;margin-top:.15rem;}
-.qbs{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
-.qb{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:1.8rem 1.5rem;text-align:center;border-radius:8px;transition:border-color .3s,background .3s;}
-.qb:hover{border-color:rgba(61,145,66,.4);background:rgba(61,145,66,.07);}
-.qb:nth-child(2){margin-top:1.5rem;}
-.qb:nth-child(4){margin-top:-1.5rem;}
-.qbi{font-size:1.9rem;margin-bottom:.7rem;}
-.qbt{font-size:1.05rem;font-weight:700;color:#7DD87D;margin-bottom:.25rem;}
-.qbs2{font-size:.95rem;color:rgba(255,255,255,.35);}
+.quality-wrap {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 6rem; align-items: center;
+}
+.quality-text .section-title { color: white; }
+.quality-text .section-desc { color: rgba(255,255,255,0.6); }
+.quality-list { list-style: none; margin-top: 2rem; }
+.quality-list li {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  font-size: 1rem; color: rgba(255,255,255,0.75);
+  line-height: 1.6;
+}
+.quality-list li .q-icon { color: #5DBF5D; font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0; }
+.quality-boxes {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;
+}
+.q-box {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: border-color 0.3s, background 0.3s;
+}
+.q-box:hover { border-color: rgba(61,139,61,0.4); background: rgba(61,139,61,0.06); }
+.q-box:nth-child(2) { margin-top: 1.5rem; }
+.q-box:nth-child(4) { margin-top: -1.5rem; }
+.q-box-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+.q-box-title { font-size: 1rem; font-weight: 900; color: #5DBF5D; margin-bottom: 0.3rem; }
+.q-box-sub { font-size: 0.88rem; color: rgba(255,255,255,0.35); }
 
 /* CONTACT */
-.cg{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin:3.5rem 0;}
-.cc{background:#fff;border:1px solid rgba(0,0,0,.07);padding:2rem 1.5rem;text-align:center;border-radius:8px;transition:border-color .3s,transform .3s;}
-.cc:hover{border-color:var(--gb);transform:translateY(-3px);}
-.ci{font-size:1.8rem;margin-bottom:.7rem;}
-.cl{font-size:.88rem;letter-spacing:.15em;text-transform:uppercase;color:#aaa;font-weight:700;margin-bottom:.4rem;}
-.cv{font-size:1.05rem;font-weight:700;line-height:1.5;}
-.btn-cta{display:inline-block;background:var(--g);color:#fff;padding:1rem 3rem;font-size:1rem;font-weight:700;border-radius:4px;transition:background .2s,transform .2s;}
-.btn-cta:hover{background:var(--gm);transform:translateY(-2px);}
+.contact-section {
+  background: var(--cream);
+  padding: 7rem 5rem;
+}
+.contact-inner {
+  max-width: 900px; margin: 0 auto; text-align: center;
+}
+.contact-inner .section-title { color: var(--text); }
+.contact-cards {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1rem; margin: 3rem 0;
+}
+.contact-card {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.06);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.contact-card:hover { border-color: var(--green-light); transform: translateY(-3px); }
+.contact-card-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+.contact-card-label {
+  font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: #999; margin-bottom: 0.4rem; font-weight: 700;
+}
+.contact-card-value { font-size: 0.95rem; font-weight: 700; color: var(--text); line-height: 1.5; }
+.btn-contact {
+  display: inline-block;
+  background: var(--green);
+  color: white;
+  padding: 1.1rem 3rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+}
+.btn-contact:hover { background: var(--green-light); transform: translateY(-2px); }
 
 /* FOOTER */
-footer{background:#0D150D;padding:4rem 4rem 2.5rem;}
-.ft{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:2rem;}
-.flk{font-family:'Noto Serif KR',serif;font-size:1.4rem;font-weight:900;color:#7DD87D;}
-.fle{font-size:.6rem;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;margin-top:2px;}
-.fi{font-size:.95rem;color:rgba(255,255,255,.28);line-height:2;margin-top:1.2rem;}
-.fn{display:flex;gap:2rem;}
-.fn a{font-size:1rem;color:rgba(255,255,255,.38);transition:color .2s;}
-.fn a:hover{color:#7DD87D;}
-.fb{display:flex;justify-content:space-between;}
-.fc{font-size:.9rem;color:rgba(255,255,255,.18);}
-
-/* ANIM */
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
-@keyframes pulse{0%,100%{opacity:.6;}50%{opacity:1;}}
-@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;}
-.reveal.on{opacity:1;transform:translateY(0);}
-
-/* RESPONSIVE */
-@media(max-width:1024px){
-  .nav{padding:0 2rem;}
-  .nav-menu{display:none;}
-  .nav-menu.open{display:flex;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:#fff;padding:2rem;border-bottom:1px solid rgba(0,0,0,.08);gap:1.5rem;box-shadow:0 10px 30px rgba(0,0,0,.1);z-index:998;}
-  .hamburger{display:flex;}
-  .hero-box{padding:0 2rem;}
-  .sec{padding:4rem 2rem;}
-  .stats{grid-template-columns:repeat(2,1fr);}
-  .origin-grid{grid-template-columns:1fr;}
-  .oc.big{grid-column:span 1;display:block;}
-  .oc.big .ov{height:240px;}
-  .pg{grid-template-columns:1fr;}
-  .sg{grid-template-columns:1fr;}
-  .qg{grid-template-columns:1fr;gap:3rem;}
-  .cg{grid-template-columns:repeat(2,1fr);}
-  footer{padding:3rem 2rem 2rem;}
-  .ft{flex-direction:column;gap:2rem;}
-  .fb{flex-direction:column;gap:.5rem;}
+footer {
+  background: var(--dark);
+  padding: 4rem 5rem 3rem;
 }
-@media(max-width:480px){
-  .hero-h1{font-size:2rem;}
-  .cg{grid-template-columns:1fr 1fr;}
-  .qbs{grid-template-columns:1fr 1fr;}
-  .qb:nth-child(2),.qb:nth-child(4){margin-top:0;}
+.footer-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 2rem;
+}
+.footer-logo-kr {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.5rem; font-weight: 900;
+  color: #5DBF5D; margin-bottom: 0.3rem;
+}
+.footer-logo-en { font-size: 0.65rem; letter-spacing: 0.3em; color: var(--gold-light); text-transform: uppercase; }
+.footer-info { font-size: 0.88rem; color: rgba(255,255,255,0.3); line-height: 2; margin-top: 1rem; }
+.footer-nav { display: flex; gap: 2rem; }
+.footer-nav a { font-size: 0.92rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.3s; }
+.footer-nav a:hover { color: #5DBF5D; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+.footer-copy { font-size: 0.82rem; color: rgba(255,255,255,0.2); }
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+@keyframes scrollDown {
+  0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
+  50% { opacity: 1; }
+  100% { opacity: 0; transform: scaleY(1); transform-origin: top; }
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .section { padding: 4rem 1.5rem; }
+  .stats { grid-template-columns: repeat(2,1fr); }
+  .origin-grid { grid-template-columns: 1fr; }
+  .origin-card.featured { grid-column: span 1; display: block; }
+  .origin-card.featured .origin-visual { height: 220px; }
+  .products-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .quality-wrap { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-section { padding: 4rem 1.5rem; }
+  .contact-cards { grid-template-columns: repeat(2,1fr); }
+  footer { padding: 3rem 1.5rem 2rem; }
+  .footer-top { flex-direction: column; gap: 2rem; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
 }
 </style>
 </head>
 <body>
 
-<nav class="nav" id="nav">
-  <div class="logo">
-    <div class="logo-mark">원</div>
-    <div>
-      <span class="logo-kr">원팜</span>
-      <span class="logo-en">ONEFARM</span>
-    </div>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-kr">원팜</div>
+    <div class="nav-logo-en">ONEFARM</div>
   </div>
-  <ul class="nav-menu" id="navMenu">
-    <li><a href="#origin">산지</a></li>
+  <ul class="nav-links">
+    <li><a href="#origin">원산지</a></li>
     <li><a href="#products">취급품목</a></li>
     <li><a href="#services">서비스</a></li>
     <li><a href="#quality">품질관리</a></li>
-    <li><a href="#contact" class="nav-btn">거래문의</a></li>
+    <li><a href="#contact" class="nav-cta">거래문의</a></li>
   </ul>
-  <div class="hamburger" id="hbg">
-    <span></span><span></span><span></span>
-  </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-img"></div>
-  <div class="hero-ov"></div>
-  <div class="hero-box">
-    <div class="hero-label">Premium Import Meat</div>
-    <h1 class="hero-h1">청정 자연에서<br><em>직접 수입한</em><br>프리미엄 수입육</h1>
-    <p class="hero-p">호주·뉴질랜드·미국 청정 목장에서 엄선한<br>최고급 육류를 레스토랑과 식품업계에 공급합니다</p>
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-badge">청정 자연에서 온 프리미엄 수입육</div>
+    <h1 class="hero-title-kr">프리미엄 수입육<br><span>도소매 전문</span></h1>
+    <p class="hero-title-en">ONEFARM · since 2020</p>
+    <p class="hero-desc">
+      호주·뉴질랜드·미국 청정 목장에서 엄선한<br>
+      최고급 수입육을 레스토랑과 식품업계에 공급합니다
+    </p>
     <div class="hero-btns">
-      <a href="#contact" class="btn-g">거래 문의하기</a>
-      <a href="#origin" class="btn-ghost">산지 알아보기</a>
+      <a href="#contact" class="btn-main">거래 문의하기</a>
+      <a href="#products" class="btn-ghost">취급 품목 보기</a>
     </div>
   </div>
-  <div class="scroll-ind">
+  <div class="scroll-hint">
     <span>SCROLL</span>
-    <div class="scroll-bar"></div>
+    <div class="scroll-line"></div>
   </div>
 </section>
 
+<!-- TICKER -->
 <div class="ticker">
-  <div class="ticker-inner">
-    <span class="ti">🌿 호주 청정 와규</span><span class="td">·</span>
-    <span class="ti">뉴질랜드 그래스페드</span><span class="td">·</span>
-    <span class="ti">USDA Prime 소고기</span><span class="td">·</span>
-    <span class="ti">이베리코 흑돼지</span><span class="td">·</span>
-    <span class="ti">뉴질랜드 청정 램</span><span class="td">·</span>
-    <span class="ti">신선 냉장 직수입</span><span class="td">·</span>
-    <span class="ti">레스토랑 납품 전문</span><span class="td">·</span>
-    <span class="ti">경기 용인 원팜</span><span class="td">·</span>
-    <span class="ti">🌿 호주 청정 와규</span><span class="td">·</span>
-    <span class="ti">뉴질랜드 그래스페드</span><span class="td">·</span>
-    <span class="ti">USDA Prime 소고기</span><span class="td">·</span>
-    <span class="ti">이베리코 흑돼지</span><span class="td">·</span>
-    <span class="ti">뉴질랜드 청정 램</span><span class="td">·</span>
-    <span class="ti">신선 냉장 직수입</span><span class="td">·</span>
-    <span class="ti">레스토랑 납품 전문</span><span class="td">·</span>
-    <span class="ti">경기 용인 원팜</span><span class="td">·</span>
+  <div class="ticker-track">
+    🌿 호주 청정 와규 <span class="dot">·</span> 뉴질랜드 그래스페드 <span class="dot">·</span> USDA Prime <span class="dot">·</span> 이베리코 흑돼지 <span class="dot">·</span> 뉴질랜드 청정 램 <span class="dot">·</span> 신선 냉장 직수입 <span class="dot">·</span> 레스토랑 납품 전문 <span class="dot">·</span> 경기 용인 원팜 <span class="dot">·</span>
+    🌿 호주 청정 와규 <span class="dot">·</span> 뉴질랜드 그래스페드 <span class="dot">·</span> USDA Prime <span class="dot">·</span> 이베리코 흑돼지 <span class="dot">·</span> 뉴질랜드 청정 램 <span class="dot">·</span> 신선 냉장 직수입 <span class="dot">·</span> 레스토랑 납품 전문 <span class="dot">·</span> 경기 용인 원팜 <span class="dot">·</span>
   </div>
 </div>
 
+<!-- STATS -->
 <div class="stats">
-  <div class="stat reveal"><div class="sn">15<span class="su">+</span></div><div class="sl">수입 국가</div></div>
-  <div class="stat reveal"><div class="sn">300<span class="su">+</span></div><div class="sl">납품 거래처</div></div>
-  <div class="stat reveal"><div class="sn">100<span class="su">%</span></div><div class="sl">품질 검증</div></div>
-  <div class="stat reveal"><div class="sn">24<span class="su">H</span></div><div class="sl">신속 배송</div></div>
+  <div class="stat reveal"><div class="stat-num">10<span class="stat-unit">+</span></div><div class="stat-label">수입 국가</div></div>
+  <div class="stat reveal"><div class="stat-num">100<span class="stat-unit">+</span></div><div class="stat-label">누적 거래처</div></div>
+  <div class="stat reveal"><div class="stat-num">100<span class="stat-unit">%</span></div><div class="stat-label">품질 검증</div></div>
+  <div class="stat reveal"><div class="stat-num">24<span class="stat-unit">H</span></div><div class="stat-label">신속 배송</div></div>
 </div>
 
-<section class="sec" id="origin">
-  <div class="eyebrow reveal">Origin of Nature</div>
-  <h2 class="h2 reveal">청정 <span class="ac">산지</span>에서<br>직접 수입합니다</h2>
-  <p class="desc reveal">자연 그대로의 환경에서 자란 건강한 가축.<br>광활한 목초지와 깨끗한 자연이 최고의 육질을 만듭니다.</p>
+<!-- ORIGIN 산지 -->
+<section class="section" id="origin">
+  <div class="section-eyebrow reveal">Origin of Nature</div>
+  <h2 class="section-title reveal">청정지역의 <span class="accent">축산물</span>을<br>전문 유통 합니다</h2>
+  <p class="section-desc reveal">자연 그대로의 환경에서 자란 건강한 가축.<br>광활한 목초지와 깨끗한 자연이 최고의 육질을 만듭니다.</p>
+
   <div class="origin-grid">
-    <div class="oc big reveal">
-      <div class="ov" style="background:linear-gradient(135deg,#1a3a1a,#2d6a2d);">
-        <img src="images/australia.jpg" alt="호주 청정 목장">
-        
+    <div class="origin-card featured reveal">
+      <div class="origin-visual aus">
+        <div class="origin-visual-icon">🐄</div>
       </div>
-      <div class="ob">
-        <div class="oflag">🇦🇺</div>
-        <div class="octry">Australia</div>
-        <div class="oname">호주 청정 목장</div>
-        <p class="otxt">광활한 대지에서 자란 와규·앵거스. 그래스페드 방식으로 자연에서 키운 최고급 소고기 산지. 세계 최고 수준의 동물 복지와 품질 관리 시스템으로 인정받는 프리미엄 산지입니다.</p>
-        <div class="tags">
-          <span class="tag">와규</span><span class="tag">앵거스</span><span class="tag">그래스페드</span><span class="tag">MSA인증</span>
+      <div class="origin-info">
+        <div class="origin-flag">🇦🇺</div>
+        <div class="origin-country">Australia</div>
+        <div class="origin-name">호주 청정 목장</div>
+        <p class="origin-text">광활한 대지에서 자란 와규·앵거스. 그래스페드 방식으로 자연에서 키운 최고급 소고기 산지. 세계 최고 수준의 동물 복지와 품질 관리 시스템으로 인정받는 프리미엄 산지입니다.</p>
+        <div class="origin-tags">
+          <span class="origin-tag">와규</span>
+          <span class="origin-tag">앵거스</span>
+          <span class="origin-tag">그래스페드</span>
         </div>
       </div>
     </div>
-    <div class="oc reveal">
-      <div class="ov" style="background:linear-gradient(135deg,#1a3a2a,#2d6a4a);">
-        <img src="images/sheep.png" alt="뉴질랜드 양떼" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.75);">
-        
+
+    <div class="origin-card reveal">
+      <div class="origin-visual nz">
+        <div class="origin-visual-icon">🐑</div>
       </div>
-      <div class="ob">
-        <div class="oflag">🇳🇿</div><div class="octry">New Zealand</div>
-        <div class="oname">뉴질랜드 목초지</div>
-        <p class="otxt">세계 최고의 청정 환경. 1년 내내 푸른 목초지에서 자란 램과 소고기의 최상급 산지.</p>
-        <div class="tags"><span class="tag">청정 램</span><span class="tag">목초 소고기</span></div>
-      </div>
-    </div>
-    <div class="oc reveal">
-      <div class="ov" style="background:linear-gradient(135deg,#3a3a1a,#6a6a2a);">
-        <img src="images/cow.png" alt="미국 소떼" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.75);">
-        
-      </div>
-      <div class="ob">
-        <div class="oflag">🇺🇸</div><div class="octry">USA</div>
-        <div class="oname">미국 중서부 농장</div>
-        <p class="otxt">USDA Prime·Choice 등급. 풍부한 마블링의 최고급 미국산 소고기를 직수입합니다.</p>
-        <div class="tags"><span class="tag">USDA Prime</span><span class="tag">USDA Choice</span></div>
+      <div class="origin-info">
+        <div class="origin-flag">🇳🇿</div>
+        <div class="origin-country">New Zealand</div>
+        <div class="origin-name">뉴질랜드 목초지</div>
+        <p class="origin-text">세계 최고의 청정 환경. 1년 내내 푸른 목초지에서 자란 램과 소고기의 최상급 산지.</p>
+        <div class="origin-tags">
+          <span class="origin-tag">청정 램</span>
+          <span class="origin-tag">목초 소고기</span>
+        </div>
       </div>
     </div>
-    <div class="oc reveal">
-      <div class="ov" style="background:linear-gradient(135deg,#5a2a0a,#8a4a18);">
-        <img src="images/pig.png" alt="스페인 돼지" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.75);">
-        
+
+    <div class="origin-card reveal">
+      <div class="origin-visual usa">
+        <div class="origin-visual-icon">🌾</div>
       </div>
-      <div class="ob">
-        <div class="oflag">🇪🇸</div><div class="octry">Spain</div>
-        <div class="oname">스페인 이베리코</div>
-        <p class="otxt">도토리 숲에서 자란 흑돼지. 세계 3대 식재료로 꼽히는 이베리코 돼지를 직수입합니다.</p>
-        <div class="tags"><span class="tag">이베리코</span><span class="tag">벨로타</span></div>
+      <div class="origin-info">
+        <div class="origin-flag">🇺🇸</div>
+        <div class="origin-country">USA</div>
+        <div class="origin-name">미국 중서부 농장</div>
+        <p class="origin-text">USDA Prime·Choice 등급. 풍부한 마블링의 최고급 미국산 소고기를 직수입합니다.</p>
+        <div class="origin-tags">
+          <span class="origin-tag">USDA Prime</span>
+          <span class="origin-tag">USDA Choice</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="origin-card reveal">
+      <div class="origin-visual esp">
+        <div class="origin-visual-icon">🐷</div>
+      </div>
+      <div class="origin-info">
+        <div class="origin-flag">🇪🇸</div>
+        <div class="origin-country">Spain</div>
+        <div class="origin-name">스페인 이베리코</div>
+        <p class="origin-text">도토리 숲에서 자란 흑돼지. 세계 3대 식재료로 꼽히는 이베리코 돼지를 직수입합니다.</p>
+        <div class="origin-tags">
+          <span class="origin-tag">이베리코</span>
+          <span class="origin-tag">벨로타</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="banner">
-  <div class="banner-img"></div>
-  <div class="banner-ov"></div>
-  <div class="banner-box">
-    <h2 class="banner-h">자연이 키운 <em>최고의 맛</em></h2>
-    <p class="banner-p">산지 파트너십을 통해 최상의 품질만을 엄선합니다</p>
-    <a href="#contact" class="btn-g">납품 문의하기</a>
+<!-- PANORAMA -->
+<div class="panorama">
+  <svg class="panorama-svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path d="M0,60 C200,20 400,80 600,40 C800,0 1000,70 1200,50 C1300,40 1380,55 1440,50 L1440,120 L0,120 Z" fill="white" opacity="0.05"/>
+    <path d="M0,80 C300,50 500,90 700,60 C900,30 1100,80 1300,65 C1380,58 1420,70 1440,65 L1440,120 L0,120 Z" fill="white" opacity="0.04"/>
+  </svg>
+  <div class="panorama-content">
+    <h2 class="panorama-title">자연이 키운<br><span class="hl">최고의 맛</span></h2>
+    <p class="panorama-sub">산지 파트너십을 통해 최상의 품질만을 엄선합니다</p>
+    <a href="#contact" class="btn-main">납품 문의하기</a>
   </div>
 </div>
 
-<section class="sec cream" id="products">
-  <div class="eyebrow reveal">Our Products</div>
-  <h2 class="h2 reveal">취급 <span class="gd">품목</span></h2>
-  <p class="desc reveal">다양한 국가에서 엄선한 프리미엄 육류와 식자재를 취급합니다.</p>
-  <div class="pg">
-    <div class="pc reveal"><div class="pi">🥩</div><div class="po">USA · Australia · Canada</div><div class="pn">프리미엄 소고기</div><p class="pd">USDA Prime, 호주 와규, 캐나다 AAA 등급. 최고 등급의 소고기를 직수입하여 최상의 품질로 공급합니다.</p></div>
-    <div class="pc reveal"><div class="pi">🐷</div><div class="po">Spain · Denmark</div><div class="pn">수입 돼지고기</div><p class="pd">스페인 이베리코 흑돼지, 덴마크 삼겹살 등 엄선된 산지의 프리미엄 돼지고기를 공급합니다.</p></div>
-    <div class="pc reveal"><div class="pi">🐑</div><div class="po">New Zealand · Australia</div><div class="pn">램 & 양고기</div><p class="pd">뉴질랜드 목초지에서 자란 청정 램. 부드러운 육질과 풍부한 풍미로 최고급 레스토랑에 납품합니다.</p></div>
-    <div class="pc reveal"><div class="pi">🐔</div><div class="po">Brazil · Thailand</div><div class="pn">가금류</div><p class="pd">대형 식품업체 직거래를 통한 신선한 닭고기, 오리고기 등 다양한 가금류를 안정적으로 공급합니다.</p></div>
-    <div class="pc reveal"><div class="pi">🌿</div><div class="po">Global</div><div class="pn">식자재</div><p class="pd">육류와 함께 사용되는 각종 식자재, 소스류, 향신료 등 레스토랑 운영에 필요한 모든 식자재를 공급합니다.</p></div>
-    <div class="pc reveal"><div class="pi">📦</div><div class="po">Custom Order</div><div class="pn">맞춤 소분</div><p class="pd">업체별 필요에 맞게 소분 및 포장 공급. 정기 납품 계약 시 전용 맞춤 서비스를 제공합니다.</p></div>
+<!-- PRODUCTS -->
+<section class="section bg-cream" id="products">
+  <div class="section-eyebrow reveal">Our Products</div>
+  <h2 class="section-title reveal">취급 <span class="gold">품목</span></h2>
+  <p class="section-desc reveal">다양한 국가에서 엄선한 프리미엄 육류와 식자재를 취급합니다.</p>
+  <div class="products-grid">
+    <div class="product-card reveal">
+      <span class="product-emoji">🥩</span>
+      <div class="product-origin-tag">USA · Australia · Canada</div>
+      <div class="product-name">프리미엄 소고기</div>
+      <p class="product-desc">USDA Prime, 호주 와규, 캐나다 AAA 등급. 최고 등급의 소고기를 직수입하여 최상의 품질로 공급합니다.</p>
+    </div>
+    <div class="product-card reveal">
+      <span class="product-emoji">🐷</span>
+      <div class="product-origin-tag">Spain · Denmark</div>
+      <div class="product-name">수입 돼지고기</div>
+      <p class="product-desc">스페인 이베리코 흑돼지, 덴마크 삼겹살 등 엄선된 산지의 프리미엄 돼지고기를 공급합니다.</p>
+    </div>
+    <div class="product-card reveal">
+      <span class="product-emoji">🐑</span>
+      <div class="product-origin-tag">New Zealand · Australia</div>
+      <div class="product-name">램 & 양고기</div>
+      <p class="product-desc">뉴질랜드 목초지에서 자란 청정 램. 부드러운 육질과 풍부한 풍미로 최고급 레스토랑에 납품합니다.</p>
+    </div>
+    <div class="product-card reveal">
+      <span class="product-emoji">🐔</span>
+      <div class="product-origin-tag">Brazil · Thailand</div>
+      <div class="product-name">가금류</div>
+      <p class="product-desc">대형 식품업체 직거래를 통한 신선한 닭고기, 오리고기 등 다양한 가금류를 안정적으로 공급합니다.</p>
+    </div>
+    <div class="product-card reveal">
+      <span class="product-emoji">🌿</span>
+      <div class="product-origin-tag">Global</div>
+      <div class="product-name">식자재</div>
+      <p class="product-desc">육류와 함께 사용되는 각종 식자재, 소스류, 향신료 등 레스토랑 운영에 필요한 모든 식자재를 공급합니다.</p>
+    </div>
+    <div class="product-card reveal">
+      <span class="product-emoji">📦</span>
+      <div class="product-origin-tag">Custom Order</div>
+      <div class="product-name">맞춤 소분</div>
+      <p class="product-desc">업체별 필요에 맞게 소분 및 포장하여 공급합니다. 정기 납품 계약 시 전용 맞춤 서비스를 제공합니다.</p>
+    </div>
   </div>
 </section>
 
-<section class="sec" id="services">
-  <div class="eyebrow reveal">What We Do</div>
-  <h2 class="h2 reveal">공급 <span class="ac">서비스</span></h2>
-  <p class="desc reveal">레스토랑부터 대형 유통까지, 모든 규모의 거래를 지원합니다.</p>
-  <div class="sg">
-    <div class="sc reveal"><div class="scn">01</div><div class="si">🏪</div><div class="sn2">레스토랑 · 호텔 납품</div><p class="sd">파인다이닝, 캐주얼 레스토랑, 호텔 뷔페 등 다양한 외식업체에 정기 납품 서비스를 제공합니다. 메뉴 컨설팅도 함께 진행합니다.</p></div>
-    <div class="sc reveal"><div class="scn">02</div><div class="si">🏬</div><div class="sn2">도매 · 유통</div><p class="sd">식품 도매상, 슈퍼마켓, 마트 등 유통업체를 위한 대량 공급 서비스. 경쟁력 있는 가격으로 안정적인 공급을 보장합니다.</p></div>
-    <div class="sc reveal"><div class="scn">03</div><div class="si">❄️</div><div class="sn2">냉장 · 냉동 콜드체인</div><p class="sd">콜드체인 시스템을 통한 신선도 유지. 수도권 당일배송, 전국 익일배송으로 최상의 상태를 유지하며 배송합니다.</p></div>
-    <div class="sc reveal"><div class="scn">04</div><div class="si">📋</div><div class="sn2">정기 공급 계약</div><p class="sd">장기 계약 고객에게는 고정 단가, 우선 공급, 전담 매니저 배정 등 특별 혜택을 제공합니다.</p></div>
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-eyebrow reveal">What We Do</div>
+  <h2 class="section-title reveal">공급 <span class="accent">서비스</span></h2>
+  <p class="section-desc reveal">레스토랑부터 대형 유통까지, 모든 규모의 거래를 지원합니다.</p>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <div class="service-icon">🏪</div>
+      <div class="service-name">레스토랑 · 호텔 납품</div>
+      <p class="service-desc">파인다이닝, 캐주얼 레스토랑, 호텔 뷔페 등 다양한 외식업체에 정기 납품 서비스를 제공합니다. 메뉴 컨설팅도 함께 진행합니다.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">02</div>
+      <div class="service-icon">🏬</div>
+      <div class="service-name">도매 · 유통</div>
+      <p class="service-desc">식품 도매상, 슈퍼마켓, 마트 등 유통업체를 위한 대량 공급 서비스. 경쟁력 있는 가격으로 안정적인 공급을 보장합니다.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">03</div>
+      <div class="service-icon">❄️</div>
+      <div class="service-name">냉장 · 냉동 콜드체인</div>
+      <p class="service-desc">콜드체인 시스템을 통한 신선도 유지. 수도권 당일배송, 전국 익일배송으로 최상의 상태를 유지하며 배송합니다.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">04</div>
+      <div class="service-icon">📋</div>
+      <div class="service-name">정기 공급 계약</div>
+      <p class="service-desc">장기 계약 고객에게는 고정 단가, 우선 공급, 전담 매니저 배정 등 특별 혜택을 제공합니다.</p>
+    </div>
   </div>
 </section>
 
-<section class="sec dark" id="quality">
-  <div class="qg">
-    <div class="reveal">
-      <div class="eyebrow white">Why ONEFARM</div>
-      <h2 class="h2 wh">품질에 대한<br><span class="ac">원팜의 약속</span></h2>
-      <p class="desc wh">원팜은 산지에서부터 직접 파트너십을 맺고, 엄격한 기준으로 검증된 육류만을 취급합니다.</p>
-      <ul class="ql">
-        <li><span class="qc">✦</span> HACCP 인증 취급 시설에서 위생적으로 관리합니다</li>
-        <li><span class="qc">✦</span> 산지 직거래로 중간 마진을 절감하여 합리적인 가격을 제공합니다</li>
-        <li><span class="qc">✦</span> 엄격한 등급 검수 및 품질 관리 시스템을 운영합니다</li>
-        <li><span class="qc">✦</span> 이력 추적 시스템으로 완벽한 식품 안전을 보장합니다</li>
-        <li><span class="qc">✦</span> 전문 셰프와 함께하는 메뉴 컨설팅 서비스를 제공합니다</li>
+<!-- QUALITY -->
+<section class="section bg-dark" id="quality">
+  <div class="quality-wrap">
+    <div class="quality-text reveal">
+      <div class="section-eyebrow" style="color:#5DBF5D;">Why ONEFARM</div>
+      <h2 class="section-title">품질에 대한<br><span style="color:#5DBF5D;">원팜의 약속</span></h2>
+      <p class="section-desc">원팜은 산지에서부터 직접 파트너십을 맺고, 엄격한 기준으로 검증된 육류만을 취급합니다.</p>
+      <ul class="quality-list">
+        <li><span class="q-icon">✦</span> HACCP 인증 취급 시설에서 위생적으로 관리합니다</li>
+        <li><span class="q-icon">✦</span> 산지 직거래로 중간 마진을 절감하여 합리적인 가격을 제공합니다</li>
+        <li><span class="q-icon">✦</span> 엄격한 등급 검수 및 품질 관리 시스템을 운영합니다</li>
+        <li><span class="q-icon">✦</span> 이력 추적 시스템으로 완벽한 식품 안전을 보장합니다</li>
+        <li><span class="q-icon">✦</span> 전문 셰프와 함께하는 메뉴 컨설팅 서비스를 제공합니다</li>
       </ul>
     </div>
-    <div class="qbs reveal">
-      <div class="qb"><div class="qbi">🌡️</div><div class="qbt">콜드체인</div><div class="qbs2">0~4°C 완벽 유지</div></div>
-      <div class="qb"><div class="qbi">🔍</div><div class="qbt">전량 검수</div><div class="qbs2">100% 품질 확인</div></div>
-      <div class="qb"><div class="qbi">📜</div><div class="qbt">HACCP 인증</div><div class="qbs2">위생 안전 보장</div></div>
-      <div class="qb"><div class="qbi">🚚</div><div class="qbt">신속 배송</div><div class="qbs2">당일 · 익일 배송</div></div>
+    <div class="quality-boxes reveal">
+      <div class="q-box"><div class="q-box-icon">🌡️</div><div class="q-box-title">콜드체인</div><div class="q-box-sub">0~4°C 완벽 유지</div></div>
+      <div class="q-box"><div class="q-box-icon">🔍</div><div class="q-box-title">전량 검수</div><div class="q-box-sub">100% 품질 확인</div></div>
+      <div class="q-box"><div class="q-box-icon">📜</div><div class="q-box-title">HACCP 인증</div><div class="q-box-sub">위생 안전 보장</div></div>
+      <div class="q-box"><div class="q-box-icon">🚚</div><div class="q-box-title">신속 배송</div><div class="q-box-sub">당일 · 익일 배송</div></div>
     </div>
   </div>
 </section>
 
-<section class="sec cream sec-center" id="contact">
-  <div class="eyebrow reveal" style="justify-content:center;">Contact Us</div>
-  <h2 class="h2 reveal">거래 <span class="ac">문의</span></h2>
-  <p class="desc center reveal">레스토랑, 호텔, 유통업체 등 모든 거래 문의를 환영합니다.</p>
-  <div class="cg">
-    <div class="cc reveal"><div class="ci">📍</div><div class="cl">주소</div><div class="cv">경기 용인시 기흥구<br>신정로41번길 5-1</div></div>
-    <div class="cc reveal"><div class="ci">👤</div><div class="cl">대표자</div><div class="cv">이형원</div></div>
-    <div class="cc reveal"><div class="ci">💼</div><div class="cl">사이트 운영</div><div class="cv">이진원</div></div>
-    <div class="cc reveal"><div class="ci">🕐</div><div class="cl">운영시간</div><div class="cv">평일<br>09:00 ~ 18:00</div></div>
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="section-eyebrow reveal" style="justify-content:center;">Contact Us</div>
+    <h2 class="section-title reveal">거래 문의</h2>
+    <p class="section-desc reveal" style="margin:0 auto 0;">레스토랑, 호텔, 유통업체 등 모든 거래 문의를 환영합니다.</p>
+    <div class="contact-cards">
+      <div class="contact-card reveal">
+        <div class="contact-card-icon">📍</div>
+        <div class="contact-card-label">주소</div>
+        <div class="contact-card-value">경기 용인시 기흥구<br>신정로41번길 5-1</div>
+      </div>
+      <div class="contact-card reveal">
+        <div class="contact-card-icon">👤</div>
+        <div class="contact-card-label">대표자</div>
+        <div class="contact-card-value">이형원</div>
+      </div>
+      <div class="contact-card reveal">
+        <div class="contact-card-icon">💼</div>
+        <div class="contact-card-label">사이트 운영</div>
+        <div class="contact-card-value">이진원</div>
+      </div>
+      <div class="contact-card reveal">
+        <div class="contact-card-icon">🕐</div>
+        <div class="contact-card-label">운영시간</div>
+        <div class="contact-card-value">평일<br>09:00 ~ 18:00</div>
+      </div>
+    </div>
+    <a href="mailto:info@onefarm.co.kr" class="btn-contact reveal">이메일로 문의하기</a>
   </div>
-  <a href="mailto:info@onefarm.co.kr" class="btn-cta reveal">이메일로 문의하기</a>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <div class="ft">
+  <div class="footer-top">
     <div>
-      <div class="flk">원팜</div>
-      <div class="fle">ONEFARM</div>
-      <div class="fi">상호명: 원팜 &nbsp;|&nbsp; 대표자: 이형원 &nbsp;|&nbsp; 사이트 운영: 이진원<br>주소: 경기도 용인시 기흥구 신정로41번길 5-1<br>수입육 도소매 · 식자재 · 레스토랑 납품 전문</div>
+      <div class="footer-logo-kr">원팜</div>
+      <div class="footer-logo-en">ONEFARM</div>
+      <div class="footer-info">
+        상호명: 원팜 &nbsp;|&nbsp; 대표자: 이형원 &nbsp;|&nbsp; 사이트 운영: 이진원<br>
+        주소: 경기도 용인시 기흥구 신정로41번길 5-1<br>
+        수입육 도소매 · 식자재 · 레스토랑 납품 전문
+      </div>
     </div>
-    <nav class="fn">
-      <a href="#origin">산지</a><a href="#products">품목</a>
-      <a href="#services">서비스</a><a href="#quality">품질관리</a><a href="#contact">문의</a>
+    <nav class="footer-nav">
+      <a href="#origin">원산지</a>
+      <a href="#products">품목</a>
+      <a href="#services">서비스</a>
+      <a href="#quality">품질관리</a>
+      <a href="#contact">문의</a>
     </nav>
   </div>
-  <div class="fb">
-    <div class="fc">© 2026 원팜 ONEFARM. All rights reserved.</div>
-    <div class="fc">프리미엄 수입육 도소매 전문</div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 원팜 ONEFARM. All rights reserved.</div>
+    <div class="footer-copy">프리미엄 수입육 도소매 전문</div>
   </div>
 </footer>
 
 <script>
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
-const hbg=document.getElementById('hbg');
-const nm=document.getElementById('navMenu');
-hbg.addEventListener('click',()=>nm.classList.toggle('open'));
-nm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nm.classList.remove('open')));
-const obs=new IntersectionObserver((entries)=>{
-  entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('on'),i*90);});
-},{threshold:.08});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 100);
+    }
+  });
+}, { threshold: 0.08 });
+reveals.forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
