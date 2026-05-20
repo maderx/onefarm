@@ -607,24 +607,35 @@ footer {
 <body>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-logo">
-    <div class="nav-logo-icon">원</div>
-    <div class="nav-logo-text">
-      <div class="nav-logo-kr">원팜</div>
-      <div class="nav-logo-en">ONEFARM</div>
+<nav style="position:fixed;top:0;left:0;right:0;z-index:9999;height:68px;background:#fff;border-bottom:1px solid #ddd;box-shadow:0 2px 8px rgba(0,0,0,0.08);display:flex;align-items:center;padding:0 2.5rem;gap:0;">
+
+  <!-- 로고 -->
+  <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none;">
+    <div style="width:40px;height:40px;background:#2A5C2A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.05rem;font-weight:900;border-radius:8px;flex-shrink:0;">원</div>
+    <div style="display:flex;flex-direction:column;line-height:1.3;">
+      <span style="font-size:1.1rem;font-weight:900;color:#111;">원팜</span>
+      <span style="font-size:0.58rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:#B8860B;">ONEFARM</span>
     </div>
   </div>
-  <ul class="nav-links">
-    <li><a href="#origin">원산지</a></li>
-    <li><a href="#products">취급품목</a></li>
-    <li><a href="#services">서비스</a></li>
-    <li><a href="#quality">품질관리</a></li>
+
+  <!-- 메뉴 링크 -->
+  <ul style="flex:1;display:flex;align-items:center;justify-content:center;gap:2.8rem;list-style:none;margin:0;padding:0;">
+    <li><a href="#origin" style="font-size:0.95rem;font-weight:500;color:#222;text-decoration:none;">원산지</a></li>
+    <li><a href="#products" style="font-size:0.95rem;font-weight:500;color:#222;text-decoration:none;">취급품목</a></li>
+    <li><a href="#services" style="font-size:0.95rem;font-weight:500;color:#222;text-decoration:none;">서비스</a></li>
+    <li><a href="#quality" style="font-size:0.95rem;font-weight:500;color:#222;text-decoration:none;">품질관리</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">거래문의</a>
-  <button class="nav-hamburger" id="hamburger" aria-label="메뉴">
-    <span></span><span></span><span></span>
+
+  <!-- 거래문의 버튼 -->
+  <a href="#contact" style="flex-shrink:0;background:#2A5C2A;color:#fff;font-size:0.95rem;font-weight:700;padding:0.65rem 1.6rem;border-radius:6px;text-decoration:none;white-space:nowrap;">거래문의</a>
+
+  <!-- 햄버거 (모바일) -->
+  <button class="nav-hamburger" id="hamburger" aria-label="메뉴" style="display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0;margin-left:1rem;">
+    <span style="display:block;width:22px;height:2px;background:#1a1a1a;border-radius:2px;transition:transform 0.3s,opacity 0.3s;"></span>
+    <span style="display:block;width:22px;height:2px;background:#1a1a1a;border-radius:2px;transition:transform 0.3s,opacity 0.3s;"></span>
+    <span style="display:block;width:22px;height:2px;background:#1a1a1a;border-radius:2px;transition:transform 0.3s,opacity 0.3s;"></span>
   </button>
+
 </nav>
 
 <!-- 모바일 드로어 메뉴 -->
