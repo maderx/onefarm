@@ -24,13 +24,12 @@ body { font-family: 'Noto Sans KR', sans-serif; background: var(--white); color:
 
 /* NAV */
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 1.2rem 5rem;
-  background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(42,92,42,0.1);
-  box-shadow: 0 2px 30px rgba(0,0,0,0.06);
+  padding: 1.1rem 5rem;
+  background: rgba(14, 24, 14, 0.96);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(76,175,80,0.18);
 }
 .nav-logo {
   display: flex; flex-direction: column; line-height: 1;
@@ -39,45 +38,46 @@ nav {
   font-family: 'Noto Serif KR', serif;
   font-size: 1.3rem;
   font-weight: 900;
-  color: var(--green);
+  color: #5DBF5D;
   letter-spacing: 0.15em;
 }
 .nav-logo-en {
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   letter-spacing: 0.3em;
-  color: var(--gold);
+  color: var(--gold-light);
   font-weight: 700;
   text-transform: uppercase;
   margin-top: 2px;
 }
 .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
 .nav-links a {
-  color: #444;
+  color: rgba(255,255,255,0.75);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 500;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   transition: color 0.3s;
   position: relative;
 }
 .nav-links a::after {
   content: '';
   position: absolute; bottom: -3px; left: 0; right: 0;
-  height: 1px; background: var(--green);
+  height: 1px; background: #5DBF5D;
   transform: scaleX(0); transition: transform 0.3s;
 }
-.nav-links a:hover { color: var(--green); }
+.nav-links a:hover { color: #5DBF5D; }
 .nav-links a:hover::after { transform: scaleX(1); }
 .nav-cta {
-  background: var(--green);
+  background: var(--green-light);
   color: white !important;
-  padding: 0.6rem 1.5rem;
+  padding: 0.55rem 1.4rem;
   font-size: 0.88rem !important;
   font-weight: 700 !important;
+  border-radius: 2px;
   transition: background 0.3s !important;
 }
 .nav-cta::after { display: none !important; }
-.nav-cta:hover { background: var(--green-light) !important; color: white !important; }
+.nav-cta:hover { background: #4AA04A !important; color: white !important; }
 
 /* HERO */
 .hero {
