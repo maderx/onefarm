@@ -25,59 +25,64 @@ body { font-family: 'Noto Sans KR', sans-serif; background: var(--white); color:
 /* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 1.1rem 5rem;
-  background: rgba(14, 24, 14, 0.96);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(76,175,80,0.18);
+  display: flex; align-items: center;
+  padding: 0 3rem;
+  height: 68px;
+  background: rgba(255,255,255,0.98);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 1px 16px rgba(0,0,0,0.07);
 }
 .nav-logo {
-  display: flex; flex-direction: column; line-height: 1;
+  display: flex; align-items: center; gap: 0.75rem;
+  flex-shrink: 0; text-decoration: none;
 }
-.nav-logo-kr {
+.nav-logo-icon {
+  width: 40px; height: 40px;
+  background: #2A5C2A;
+  color: white;
+  display: flex; align-items: center; justify-content: center;
   font-family: 'Noto Serif KR', serif;
-  font-size: 1.3rem;
-  font-weight: 900;
-  color: #5DBF5D;
-  letter-spacing: 0.15em;
+  font-size: 1.05rem; font-weight: 900;
+  border-radius: 8px; flex-shrink: 0;
+}
+.nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+.nav-logo-kr {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1.1rem; font-weight: 900;
+  color: #1a1a1a; letter-spacing: 0.04em;
 }
 .nav-logo-en {
-  font-size: 0.62rem;
-  letter-spacing: 0.3em;
-  color: var(--gold-light);
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-top: 2px;
+  font-size: 0.58rem; letter-spacing: 0.3em;
+  color: #B8860B; font-weight: 700;
+  text-transform: uppercase; margin-top: 3px;
 }
-.nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+.nav-links {
+  flex: 1;
+  display: flex; justify-content: center; gap: 2.8rem;
+  list-style: none; align-items: center;
+}
 .nav-links a {
-  color: rgba(255,255,255,0.75);
+  color: #333;
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  transition: color 0.3s;
-  position: relative;
+  font-size: 0.92rem; font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: color 0.25s;
+  white-space: nowrap;
 }
-.nav-links a::after {
-  content: '';
-  position: absolute; bottom: -3px; left: 0; right: 0;
-  height: 1px; background: #5DBF5D;
-  transform: scaleX(0); transition: transform 0.3s;
-}
-.nav-links a:hover { color: #5DBF5D; }
-.nav-links a:hover::after { transform: scaleX(1); }
+.nav-links a:hover { color: #2A5C2A; }
 .nav-cta {
-  background: var(--green-light);
+  flex-shrink: 0;
+  background: #2A5C2A !important;
   color: white !important;
-  padding: 0.55rem 1.4rem;
-  font-size: 0.88rem !important;
+  padding: 0.65rem 1.6rem !important;
+  font-size: 0.92rem !important;
   font-weight: 700 !important;
-  border-radius: 2px;
-  transition: background 0.3s !important;
+  border-radius: 6px !important;
+  text-decoration: none;
+  transition: background 0.25s !important;
+  white-space: nowrap;
 }
-.nav-cta::after { display: none !important; }
-.nav-cta:hover { background: #4AA04A !important; color: white !important; }
+.nav-cta:hover { background: #3D8B3D !important; }
 
 /* HERO */
 .hero {
@@ -549,8 +554,9 @@ footer {
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 900px) {
-  nav { padding: 1rem 1.5rem; }
+  nav { padding: 0 1.5rem; }
   .nav-links { display: none; }
+  .nav-cta { padding: 0.55rem 1.1rem !important; font-size: 0.82rem !important; }
   .section { padding: 4rem 1.5rem; }
   .stats { grid-template-columns: repeat(2,1fr); }
   .origin-grid { grid-template-columns: 1fr; }
@@ -572,16 +578,19 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <div class="nav-logo-kr">원팜</div>
-    <div class="nav-logo-en">ONEFARM</div>
+    <div class="nav-logo-icon">원</div>
+    <div class="nav-logo-text">
+      <div class="nav-logo-kr">원팜</div>
+      <div class="nav-logo-en">ONEFARM</div>
+    </div>
   </div>
   <ul class="nav-links">
     <li><a href="#origin">원산지</a></li>
     <li><a href="#products">취급품목</a></li>
     <li><a href="#services">서비스</a></li>
     <li><a href="#quality">품질관리</a></li>
-    <li><a href="#contact" class="nav-cta">거래문의</a></li>
   </ul>
+  <a href="#contact" class="nav-cta">거래문의</a>
 </nav>
 
 <!-- HERO -->
