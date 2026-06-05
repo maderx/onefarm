@@ -1065,7 +1065,7 @@ footer{background:var(--black);padding:5.5rem 4rem 2.5rem;color:rgba(255,255,255
     <source src="https://videos.pexels.com/video-files/4253925/4253925-hd_1920_1080_25fps.mp4" type="video/mp4">
   </video>
   <!-- fallback bg -->
-  <div class="vstrip-img" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1920&q=80')"></div>
+  <div class="vstrip-img" style="background-image:url('images/video-bg.jpg')"></div>
   <div class="vstrip-overlay">
     <div class="vstrip-body rv">
       <div class="eyebrow" style="color:var(--sage-light);justify-content:center;margin-bottom:1.5rem">
@@ -1379,7 +1379,7 @@ const heroVid = document.querySelector('.hero-media video');
 if (heroVid) {
   heroVid.play().catch(() => {
     heroVid.parentElement.style.background =
-      "url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat";
+      "url('images/hero-fallback.jpg') center/cover no-repeat";
   });
 }
 </script>
