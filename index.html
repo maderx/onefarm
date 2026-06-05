@@ -159,6 +159,8 @@ ul{list-style:none}
   display:flex;align-items:flex-end;overflow:hidden;
 }
 .hero-media{position:absolute;inset:0;z-index:0;background:url("images/hero.jpg") center/cover no-repeat}
+/* 히어로 비디오 object-position */
+.hero-media video{object-position:center center}
 .hero-media video{width:100%;height:100%;object-fit:cover;object-position:center}
 .hero-grad{
   position:absolute;inset:0;z-index:1;
@@ -718,6 +720,9 @@ footer{background:var(--black);padding:5.5rem 4rem 2.5rem;color:rgba(255,255,255
   .nav-links,.nav-cta{display:none}
   .hamburger{display:flex}
   .hero-inner{padding:0 1.8rem 5.5rem}
+  /* 모바일: 히어로 이미지 오른쪽(풍경) 위주로 보이게 */
+  .hero-media{background-position:65% center}
+  .hero-media video{object-position:65% center}
   .scroll-hint{right:1.8rem}
   .sec{padding:5.5rem 1.8rem}
   .ftt{padding:5rem 1.8rem}
