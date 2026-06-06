@@ -71,12 +71,8 @@ ul{list-style:none}
 }
 /* logo */
 .logo{display:flex;align-items:center;gap:14px;flex-shrink:0}
-.logo-mark{
-  width:52px;height:52px;flex-shrink:0;
-  background:var(--fern);border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-}
-.logo-mark svg{width:46px;height:46px}
+.logo-mark{flex-shrink:0;}
+.logo-mark img{width:52px;height:52px;border-radius:10px;display:block;}
 .logo-text{display:flex;flex-direction:column;line-height:1.2}
 .logo-kr{
   font-family:'Inter','Playfair Display',sans-serif;
@@ -779,29 +775,7 @@ footer{background:var(--black);padding:5.5rem 4rem 2.5rem;color:rgba(255,255,255
 <nav id="nav">
   <a href="#" class="logo">
     <div class="logo-mark">
-      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%"   stop-color="#e8e8e8"/>
-            <stop offset="35%"  stop-color="#ffffff"/>
-            <stop offset="65%"  stop-color="#d0d0d0"/>
-            <stop offset="100%" stop-color="#b8b8b8"/>
-          </linearGradient>
-        </defs>
-        <!-- 타원 호: 중심(50,52) rx=36 ry=26 / 상단 세로바(x=50±7) 갭 -->
-        <!-- 세로바 왼쪽 호 -->
-        <path d="M 43 26.5 A 36 26 0 1 0 43 77.5"
-          stroke="url(#sg)" stroke-width="5" fill="none" stroke-linecap="round"/>
-        <!-- 세로바 오른쪽 호 -->
-        <path d="M 57 26.5 A 36 26 0 0 1 57 77.5"
-          stroke="url(#sg)" stroke-width="5" fill="none" stroke-linecap="round"/>
-        <!-- 세로 바 -->
-        <line x1="50" y1="26" x2="50" y2="78"
-          stroke="url(#sg)" stroke-width="5.5" stroke-linecap="square"/>
-        <!-- 가로 크로스바 -->
-        <line x1="50" y1="57" x2="82" y2="57"
-          stroke="url(#sg)" stroke-width="5" stroke-linecap="square"/>
-      </svg>
+      <img src="images/logo-mark.png" alt="원팜 ONE FARM 로고">
     </div>
     <div class="logo-text">
       <span class="logo-kr">ONE FARM</span>
