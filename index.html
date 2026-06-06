@@ -649,20 +649,22 @@ ul{list-style:none}
   margin-top:1rem;
 }
 .btn-email{
-  display:inline-flex;align-items:center;gap:.7rem;
+  display:inline-flex;align-items:center;justify-content:center;gap:.7rem;
   background:var(--fern);color:var(--white);
   font-size:.95rem;font-weight:700;letter-spacing:.05em;
   padding:1.1rem 2.8rem;border-radius:3px;
+  flex:1;min-width:240px;max-width:340px;
   transition:background .3s,transform .2s;
 }
 .btn-email:hover{background:var(--forest);transform:translateY(-2px)}
 /* KakaoTalk button */
 .btn-kakao{
-  display:inline-flex;align-items:center;gap:.75rem;
+  display:inline-flex;align-items:center;justify-content:center;gap:.75rem;
   background:#FEE500;color:#3A1D1D;
   font-size:.95rem;font-weight:700;letter-spacing:.04em;
   padding:1.1rem 2.8rem;border-radius:3px;
   border:none;cursor:pointer;
+  flex:1;min-width:240px;max-width:340px;
   transition:background .3s,transform .2s;
 }
 .btn-kakao:hover{background:#f5d800;transform:translateY(-2px)}
