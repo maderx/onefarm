@@ -76,7 +76,7 @@ ul{list-style:none}
   background:var(--fern);border-radius:6px;
   display:flex;align-items:center;justify-content:center;
 }
-.logo-mark svg{width:44px;height:44px}
+.logo-mark svg{width:54px;height:40px}
 .logo-text{display:flex;flex-direction:column;line-height:1.2}
 .logo-kr{
   font-family:'Inter','Playfair Display',sans-serif;
@@ -785,19 +785,27 @@ footer{background:var(--black);padding:5.5rem 4rem 2.5rem;color:rgba(255,255,255
         - 세로 바 (타원 좌중앙)
         - 가로 크로스바 (세로 바에서 우측으로)
       -->
-      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- 타원 링: (26,9)에서 시계방향으로 (16,9)까지 큰 호 → 상단 갭 형성 -->
-        <path d="M 26 9 A 18 13 0 1 1 16 9"
-          stroke="rgba(255,255,255,0.92)" stroke-width="2.4" fill="none"
-          stroke-linecap="round"/>
-        <!-- 세로 바: 타원 상하 경계 안에서 -->
-        <line x1="20" y1="9" x2="20" y2="35"
-          stroke="rgba(255,255,255,0.92)" stroke-width="2.4"
-          stroke-linecap="round"/>
-        <!-- 가로 크로스바: 세로 바에서 타원 우측 끝까지 -->
-        <line x1="20" y1="23" x2="37" y2="23"
-          stroke="rgba(255,255,255,0.92)" stroke-width="2.4"
-          stroke-linecap="round"/>
+      <svg viewBox="0 0 60 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="silver" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%"   stop-color="rgba(255,255,255,1)"/>
+            <stop offset="40%"  stop-color="rgba(255,255,255,0.95)"/>
+            <stop offset="100%" stop-color="rgba(200,210,200,0.8)"/>
+          </linearGradient>
+        </defs>
+        <!-- 타원 링: 상단 세로바 위치에서 갭, 나머지 전체 호 -->
+        <!-- 좌측 호: 오른쪽 상단 갭 끝(34,4) → 반시계 → 왼쪽 상단 갭 시작(26,4) -->
+        <path d="M 34 4 A 26 18 0 1 0 26 4"
+          stroke="url(#silver)" stroke-width="3" fill="none"
+          stroke-linecap="butt"/>
+        <!-- 세로 바: 타원 상단(y=4) ~ 하단(y=40) 경계 딱 맞춤 -->
+        <line x1="30" y1="4" x2="30" y2="40"
+          stroke="url(#silver)" stroke-width="3.2"
+          stroke-linecap="square"/>
+        <!-- 가로 크로스바: 세로 바 오른쪽으로, 약간 아래쪽 -->
+        <line x1="30" y1="27" x2="53" y2="27"
+          stroke="url(#silver)" stroke-width="3"
+          stroke-linecap="square"/>
       </svg>
     </div>
     <div class="logo-text">
