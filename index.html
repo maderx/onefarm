@@ -71,8 +71,16 @@ ul{list-style:none}
 }
 /* logo */
 .logo{display:flex;align-items:center;gap:14px;flex-shrink:0}
-.logo-mark{flex-shrink:0;}
-.logo-mark img{width:52px;height:52px;border-radius:10px;display:block;}
+.logo-mark{
+  width:52px;height:52px;flex-shrink:0;
+  background:var(--fern);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  padding:7px;
+}
+.logo-mark img{
+  width:100%;height:100%;object-fit:contain;
+  filter:brightness(0) invert(1);
+}
 .logo-text{display:flex;flex-direction:column;line-height:1.2}
 .logo-kr{
   font-family:'Inter','Playfair Display',sans-serif;
