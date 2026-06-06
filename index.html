@@ -72,11 +72,10 @@ ul{list-style:none}
 /* logo */
 .logo{display:flex;align-items:center;gap:14px;flex-shrink:0}
 .logo-mark{
-  width:44px;height:44px;flex-shrink:0;
-  background:var(--fern);border-radius:6px;
+  flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
 }
-.logo-mark svg{width:50px;height:35px}
+.logo-mark img{width:52px;height:auto}
 .logo-text{display:flex;flex-direction:column;line-height:1.2}
 .logo-kr{
   font-family:'Inter','Playfair Display',sans-serif;
@@ -779,23 +778,7 @@ footer{background:var(--black);padding:5.5rem 4rem 2.5rem;color:rgba(255,255,255
 <nav id="nav">
   <a href="#" class="logo">
     <div class="logo-mark">
-      <!--
-        OF 스타일 로고:
-        - 타원 링 (상단에 세로 바가 통과하는 갭)
-        - 세로 바 (타원 좌중앙)
-        - 가로 크로스바 (세로 바에서 우측으로)
-      -->
-      <svg viewBox="0 0 60 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- 타원: 중심(30,21) rx=24 ry=15 / 상단 세로바 위치(x=30±5)에 갭 -->
-        <path d="M 35 6.5 A 24 15 0 1 1 25 6.5"
-          stroke="rgba(255,255,255,0.93)" stroke-width="2.8" fill="none" stroke-linecap="round"/>
-        <!-- 세로 바: 타원 상단~하단 딱 맞춤 -->
-        <line x1="30" y1="6" x2="30" y2="36"
-          stroke="rgba(255,255,255,0.93)" stroke-width="2.8" stroke-linecap="round"/>
-        <!-- 가로 크로스바 -->
-        <line x1="30" y1="25" x2="52" y2="25"
-          stroke="rgba(255,255,255,0.93)" stroke-width="2.8" stroke-linecap="round"/>
-      </svg>
+      <img src="images/logo-mark.png" alt="원팜 ONE FARM 로고">
     </div>
     <div class="logo-text">
       <span class="logo-kr">ONE FARM</span>
