@@ -184,9 +184,6 @@ ul{list-style:none}
   display:flex;align-items:flex-end;overflow:hidden;
 }
 .hero-media{position:absolute;inset:0;z-index:0;background:url("images/hero.jpg") center/cover no-repeat}
-/* 히어로 비디오 object-position */
-.hero-media video{object-position:center center}
-.hero-media video{width:100%;height:100%;object-fit:cover;object-position:center}
 .hero-grad{
   position:absolute;inset:0;z-index:1;
   background:linear-gradient(
@@ -471,7 +468,6 @@ ul{list-style:none}
 .vstrip{
   position:relative;height:620px;overflow:hidden;
 }
-.vstrip video,
 .vstrip .vstrip-img{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
 }
@@ -754,7 +750,6 @@ footer{background:var(--black);padding:5.5rem 4rem 2.5rem;color:rgba(255,255,255
   .hero-inner{padding:0 1.8rem 5.5rem}
   /* 모바일: 왼쪽 소 전체 보이게 */
   .hero-media{background-position:35% 15%}
-  .hero-media video{object-position:35% 15%}
   .scroll-hint{right:1.8rem}
   .sec{padding:5.5rem 1.8rem}
   .ftt{padding:5rem 1.8rem}
@@ -838,13 +833,7 @@ footer{background:var(--black);padding:5.5rem 4rem 2.5rem;color:rgba(255,255,255
 
 <!-- ════════════ HERO ════════════ -->
 <section class="hero">
-  <div class="hero-media">
-    <video autoplay muted loop playsinline preload="auto"
-      poster="images/hero.jpg">
-      <source src="https://videos.pexels.com/video-files/3536474/3536474-uhd_2560_1440_25fps.mp4" type="video/mp4">
-      <source src="https://videos.pexels.com/video-files/857251/857251-hd_1920_1080_25fps.mp4" type="video/mp4">
-    </video>
-  </div>
+  <div class="hero-media"></div>
   <div class="hero-grad"></div>
 
   <div class="hero-inner">
@@ -1089,11 +1078,6 @@ footer{background:var(--black);padding:5.5rem 4rem 2.5rem;color:rgba(255,255,255
 
 <!-- ════════════ VIDEO STRIP ════════════ -->
 <div class="vstrip">
-  <video autoplay muted loop playsinline preload="none">
-    <source src="https://videos.pexels.com/video-files/5532771/5532771-uhd_2560_1440_25fps.mp4" type="video/mp4">
-    <source src="https://videos.pexels.com/video-files/4253925/4253925-hd_1920_1080_25fps.mp4" type="video/mp4">
-  </video>
-  <!-- fallback bg -->
   <div class="vstrip-img" style="background-image:url('images/video-bg.jpg')"></div>
   <div class="vstrip-overlay">
     <div class="vstrip-body rv">
@@ -1394,21 +1378,16 @@ drw.querySelectorAll('a').forEach(a => {
   });
 });
 
-/* video strip: hide static bg once video plays */
-document.querySelectorAll('.vstrip video').forEach(v => {
-  v.addEventListener('playing', () => {
-    const img = v.nextElementSibling;
-    if (img && img.classList.contains('vstrip-img')) img.style.display = 'none';
-  });
-  v.play().catch(() => {});
-});
-
-/* hero video fallback */
-const heroVid = document.querySelector('.hero-media video');
-if (heroVid) {
-  heroVid.play().catch(() => {
-    heroVid.parentElement.style.background =
-      "url('images/hero-fallback.jpg') center/cover no-repeat";
+/* 인앱·크롬 앱은 주소창이 접힐 때 vh가 바뀌어 히어로 배경이 확대/축소됨 → 터치기기는 가로폭이 바뀔 때만 높이 재계산 */
+const hero = document.querySelector('.hero');
+if (hero && matchMedia('(pointer: coarse)').matches) {
+  let lockedW = innerWidth;
+  hero.style.height = hero.offsetHeight + 'px';
+  addEventListener('resize', () => {
+    if (innerWidth === lockedW) return;
+    lockedW = innerWidth;
+    hero.style.height = '';
+    hero.style.height = hero.offsetHeight + 'px';
   });
 }
 </script>
